@@ -27,20 +27,22 @@ type SocialLink = {
   link: string
 }
 
+const config = require('../next.config');
+
 export const PROJECTS: Project[] = [
   {
     name: 'Grey Finance',
     description:
       'Fintech app for sending and reciving money from different currencies',
     link: 'https://play.google.com/store/apps/details?id=co.grey.mobile.android&hl=en&pli=1',
-    url: '${basePath}/grey.png',
+    url: '${config.basePath}/grey.png',
     id: 'project1',
   },
   {
     name: 'JustEase',
     description: 'App to educate and enlightenment citizens about their rights and duties',
     link: 'https://play.google.com/store/apps/details?id=com.lawpavilion.lr&hl=en',
-    url: '${basePath}/justease.png',
+    url: '${config.basePath}/justease.png',
     id: 'project2',
   },
 ]
