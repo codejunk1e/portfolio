@@ -1,4 +1,6 @@
-import createMDX from '@next/mdx';
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,8 +10,4 @@ const nextConfig = {
   distDir: 'build',
 };
 
-const withMDX = createMDX({
-  extension: /\.mdx?$/,
-});
-
-export default withMDX(nextConfig);
+module.exports = withMDX(nextConfig);
