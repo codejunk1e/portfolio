@@ -52,7 +52,7 @@ type ProgressiveBlurHoverProps = {
   link: string
 }
 
-export function ProgressiveBlurHover({ url, name, link }: ProgressiveBlurHoverProps) {
+function ProgressiveBlurHover({ url, name, link }: ProgressiveBlurHoverProps) {
   const [isHover, setIsHover] = useState(false);
 
   return (
