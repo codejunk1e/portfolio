@@ -1,3 +1,6 @@
+// @ts-ignore
+import config from '../next.config.js'
+
 type Project = {
   name: string
   description: string
@@ -26,8 +29,6 @@ type SocialLink = {
   label: string
   link: string
 }
-
-import config from '../next.config'
 
 export const PROJECTS: Project[] = [
   {
