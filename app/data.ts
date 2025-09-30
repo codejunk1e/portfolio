@@ -1,5 +1,5 @@
-// @ts-ignore
-import config from '../next.config.js'
+// Get basePath from Next.js environment variable (configured in next.config.js)
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 type Project = {
   name: string
@@ -36,14 +36,14 @@ export const PROJECTS: Project[] = [
     description:
       'Fintech app for sending and reciving money from different currencies',
     link: 'https://play.google.com/store/apps/details?id=co.grey.mobile.android&hl=en&pli=1',
-    url: `${config.basePath}/grey.png`,
+    url: `${basePath}/grey.png`,
     id: 'project1',
   },
   {
     name: 'JustEase',
     description: 'App to educate and enlightenment citizens about their rights and duties',
     link: 'https://play.google.com/store/apps/details?id=com.lawpavilion.lr&hl=en',
-    url: `${config.basePath}/justease.png`,
+    url: `${basePath}/justease.png`,
     id: 'project2',
   },
 ]
