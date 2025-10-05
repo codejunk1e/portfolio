@@ -12,8 +12,8 @@ import {
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
-import { useState } from 'react';
-import { ProgressiveBlur } from '@/components/motion-primitives/progressive-blur';
+import { useState } from 'react'
+import { ProgressiveBlur } from '@/components/motion-primitives/progressive-blur'
 
 import {
   PROJECTS,
@@ -53,24 +53,24 @@ type ProgressiveBlurHoverProps = {
 }
 
 function ProgressiveBlurHover({ url, name, link }: ProgressiveBlurHoverProps) {
-  const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(false)
 
   return (
     <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className='block relative my-4 aspect-square h-[300px] overflow-hidden rounded-[4px]'
+      className="relative my-4 block aspect-square h-[300px] overflow-hidden rounded-[4px]"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
       <img
         src={url}
         alt={name}
-        className='absolute inset-0 w-full h-full object-cover object-top'
+        className="absolute inset-0 h-full w-full object-cover object-top"
       />
       <ProgressiveBlur
-        className='pointer-events-none absolute bottom-0 left-0 h-[75%] w-full'
+        className="pointer-events-none absolute bottom-0 left-0 h-[75%] w-full"
         blurIntensity={0.5}
         animate={isHover ? 'visible' : 'hidden'}
         variants={{
@@ -80,7 +80,7 @@ function ProgressiveBlurHover({ url, name, link }: ProgressiveBlurHoverProps) {
         transition={{ duration: 0.2, ease: 'easeOut' }}
       />
       <motion.div
-        className='absolute bottom-0 left-0'
+        className="absolute bottom-0 left-0"
         animate={isHover ? 'visible' : 'hidden'}
         variants={{
           hidden: { opacity: 0 },
@@ -88,15 +88,13 @@ function ProgressiveBlurHover({ url, name, link }: ProgressiveBlurHoverProps) {
         }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
       >
-        <div className='flex flex-col items-start gap-0 px-5 py-4'>
-          <p className='text-base font-medium text-white'>{name}</p>
+        <div className="flex flex-col items-start gap-0 px-5 py-4">
+          <p className="text-base font-medium text-white">{name}</p>
         </div>
       </motion.div>
     </a>
-  );
+  )
 }
-
-
 
 function MagneticSocialLink({
   children,
@@ -140,7 +138,7 @@ export default function Personal() {
       initial="hidden"
       animate="visible"
     >
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -150,9 +148,9 @@ export default function Personal() {
             Designing journeys, building apps, chasing that 'aha!' moment.
           </p>
         </div>
-      </motion.section>
+      </motion.section> */}
 
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -177,9 +175,9 @@ export default function Personal() {
             </div>
           ))}
         </div>
-      </motion.section>
+      </motion.section> */}
 
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -215,6 +213,13 @@ export default function Personal() {
             </a>
           ))}
         </div>
+      </motion.section> */}
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <Bio />
       </motion.section>
 
       <motion.section
@@ -255,8 +260,7 @@ export default function Personal() {
 
       <motion.section
         variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
+        transition={TRANSITION_SECTION}>
         <h3 className="mb-5 text-lg font-medium">Connect</h3>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           Feel free to contact me at{' '}
@@ -273,5 +277,37 @@ export default function Personal() {
         </div>
       </motion.section>
     </motion.main>
+  )
+}
+
+function Bio() {
+  return (
+    <section>
+      <a href="" target="_blank">
+        <img
+          src="https://avatars.githubusercontent.com/u/20438065?v=4"
+          alt="Profile photo"
+          className="mx-auto mt-0 mb-10 block rounded-full bg-gray-100 grayscale hover:grayscale-0 sm:float-right sm:mb-5 sm:ml-5 lg:mt-5 lg:mb-5"
+          width={160}
+          height={160}
+        />
+      </a>
+      <h1 className="mb-8 text-2xl font-medium">Konnichiwa!</h1>
+      <div className="prose prose-neutral dark:prose-invert">
+        <p>My name is Igboanyika Nnaemeka aka Robin.</p>
+        <p>
+          A curious child turned Mobile Developer that loves tinkering with
+          pixels and code. Designing journeys, building apps, chasing that
+          'aha!' moment.
+        </p>
+        <p></p>
+        <p>
+          Currently crafting great mobile experinces{' '}
+          <a href="https://grey.co" target="_blank">
+            Grey
+          </a>{' '}
+        </p>
+      </div>
+    </section>
   )
 }

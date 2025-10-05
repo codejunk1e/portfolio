@@ -106,6 +106,10 @@ export const BLOG_POSTS: BlogPost[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
+    label: 'CV',
+    link: 'https://docs.google.com/document/d/1tOH9gZ97umrfXONVOGcVNZsyIV9RBS9ebGAwSsuHX5w/preview?tab=t.0',
+  },
+  {
     label: 'Github',
     link: 'https://github.com/codejunk1e',
   },

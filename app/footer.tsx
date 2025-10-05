@@ -15,12 +15,7 @@ const THEMES_OPTIONS = [
     label: 'Dark',
     id: 'dark',
     icon: <MoonIcon className="h-4 w-4" />,
-  },
-  {
-    label: 'System',
-    id: 'system',
-    icon: <MonitorIcon className="h-4 w-4" />,
-  },
+  }
 ]
 
 function ThemeSwitch() {
@@ -73,7 +68,7 @@ export function Footer() {
         <a href="https://github.com/ibelick/nim" target="_blank">
           <TextLoop className="text-xs text-zinc-500">
             <span>© 2025 Robin</span>
-            <span>Built for fun</span>
+            <span>May the force be with you</span>
           </TextLoop>
         </a>
         <div className="text-xs text-zinc-400">
