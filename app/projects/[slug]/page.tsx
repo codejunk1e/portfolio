@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "@/components/mdx";
-import { formatDate, getBlogPosts } from "@/app/lib/posts";
+import { getProjectPosts } from "@/app/lib/posts";
 import { metaData } from "@/app/lib/config";
 
 export function generateStaticParams() {
-  let posts = getBlogPosts();
+  let projects = getProjectPosts();
 
-  return posts.map((post) => ({
-    slug: post.slug,
+  return projects.map((project) => ({
+    slug: project.slug,
   }));
 }
 
@@ -18,8 +18,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
   const { slug } = await params;
-  let post = getBlogPosts().find((post) => post.slug === slug);
-  if (!post) {
+  let project = getProjectPosts().find((project) => project.slug === slug);
+  if (!project) {
     return;
   }
 
@@ -28,7 +28,7 @@ export async function generateMetadata({
     publishedAt: publishedTime,
     summary: description,
     image,
-  } = post.metadata;
+  } = project.metadata;
   let ogImage = image
     ? image
     : `${metaData.baseUrl}/og?title=${encodeURIComponent(title)}`;
@@ -41,7 +41,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `${metaData.baseUrl}/blog/${post.slug}`,
+      url: `${metaData.baseUrl}/projects/${project.slug}`,
       images: [
         {
           url: ogImage,
@@ -57,15 +57,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function Blog({
+export default async function Project({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  let post = getBlogPosts().find((post) => post.slug === slug);
+  let project = getProjectPosts().find((project) => project.slug === slug);
 
-  if (!post) {
+  if (!project) {
     notFound();
   }
 
@@ -77,15 +77,15 @@ export default async function Blog({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${metaData.baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${metaData.baseUrl}/blog/${post.slug}`,
+            "@type": "Article",
+            headline: project.metadata.title,
+            datePublished: project.metadata.publishedAt,
+            dateModified: project.metadata.publishedAt,
+            description: project.metadata.summary,
+            image: project.metadata.image
+              ? `${metaData.baseUrl}${project.metadata.image}`
+              : `/og?title=${encodeURIComponent(project.metadata.title)}`,
+            url: `${metaData.baseUrl}/projects/${project.slug}`,
             author: {
               "@type": "Person",
               name: metaData.name,
@@ -93,14 +93,14 @@ export default async function Blog({
           }),
         }}
       />
-      <h1 className="title mb-3 font-medium text-2xl">{post.metadata.title}</h1>
+      <h1 className="title mb-3 font-medium text-2xl">{project.metadata.title}</h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-medium">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)}
+          {project.metadata.summary}
         </p>
       </div>
       <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-        <CustomMDX source={post.content} />
+        <CustomMDX source={project.content} />
       </article>
     </section>
   );

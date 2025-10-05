@@ -28,6 +28,9 @@ function parseFrontmatter(fileContent: string) {
 }
 
 function getMDXFiles(dir: string) {
+  if (!fs.existsSync(dir)) {
+    return [];
+  }
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
@@ -52,6 +55,10 @@ function getMDXData(dir: string) {
 
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), "content"));
+}
+
+export function getProjectPosts() {
+  return getMDXData(path.join(process.cwd(), "content/projects"));
 }
 
 export function formatDate(date: string, includeRelative = false) {
