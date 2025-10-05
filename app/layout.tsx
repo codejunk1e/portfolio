@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   title: {
     default: 'Robin\'s portfolio',
-    template: '%s | Nim'
+    template: '%s | Robin\'s portfolio'
   },
   description:  'My personal portfolio',
 };
