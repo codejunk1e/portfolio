@@ -13,7 +13,7 @@ export default function BlogPosts() {
     <section>
       <h1 className="mb-8 text-2xl font-medium">Recent Blogs</h1>
       <div>
-        {allBlogs
+        {/* {allBlogs
           .sort((a, b) => {
             if (
               new Date(a.metadata.publishedAt) >
@@ -38,7 +38,7 @@ export default function BlogPosts() {
                 </p>
               </div>
             </Link>
-          ))}
+          ))} */}
       </div>
     </section>
   );

@@ -7,9 +7,9 @@ import { metaData } from "@/app/lib/config";
 export function generateStaticParams() {
   let projects = getProjectPosts();
 
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+  return projects.length > 0
+    ? projects.map(project => ({ slug: project.slug }))
+    : [{ slug: 'dummy-path' }];
 }
 
 export async function generateMetadata({

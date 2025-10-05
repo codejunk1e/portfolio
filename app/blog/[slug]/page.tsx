@@ -5,11 +5,11 @@ import { formatDate, getBlogPosts } from "@/app/lib/posts";
 import { metaData } from "@/app/lib/config";
 
 export function generateStaticParams() {
-  let posts = getBlogPosts();
+  const posts = getBlogPosts();
 
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return posts.length > 0
+    ? posts.map(posts => ({ slug: posts.slug }))
+    : [{ slug: 'dummy-path' }]; 
 }
 
 export async function generateMetadata({
