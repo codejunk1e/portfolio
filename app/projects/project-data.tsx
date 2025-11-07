@@ -21,7 +21,7 @@ export const projects: Project[] = [
     year: 2023,
     description: "Lawtech",
     url: "https://play.google.com/store/apps/details?id=com.lawpavilion.lr&hl=en",
-    image: "https://lawrights.lawpavilion.com/images/phone.png",
+    image: "https://github.com/codejunk1e/codejunk1e.github.io/blob/live/public/justease.png",
     target: "_self"
   },
 ];
