@@ -3,7 +3,7 @@ const withMDX = require('@next/mdx')({
 });
 
 const isProd = process.env.NODE_ENV === "production"
-const basePath = isProd ? "/portfolio" : ""
+const basePath = isProd ? "" : ""
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
